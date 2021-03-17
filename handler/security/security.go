@@ -1,43 +1,56 @@
 package security
 
-import "github.com/spf13/cobra"
+import (
+	"odfe-cli/entity"
+
+	"github.com/spf13/cobra"
+)
 
 // handlers are cobra functions defined with signature
 // func(cmd *cobra.Command, args []string)
 // these functions can be used directly when declaring cobra.Command structures
 
-func Accounts(cmd *cobra.Command, args []string) {
+func Accounts(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func ActionGroups(cmd *cobra.Command, args []string) {
+func ActionGroups(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func Users(cmd *cobra.Command, args []string) {
+func Users(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func Roles(cmd *cobra.Command, args []string) {
+func Roles(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func RoleMappings(cmd *cobra.Command, args []string) {
+func RoleMappings(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func Tenants(cmd *cobra.Command, args []string) {
+func Tenants(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func Config(cmd *cobra.Command, args []string) {
+func Config(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func Cache(cmd *cobra.Command, args []string) {
+func Cache(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
 
-func Health(cmd *cobra.Command, args []string) {
+func Health(p *entity.Profile) func(cmd *cobra.Command, args []string) {
 
+	return nil
 }
