@@ -1,38 +1,44 @@
 package commands
 
+import (
+	handler "odfe-cli/handler/security"
+
+	"github.com/spf13/cobra"
+)
+
 // this file is strictly for defining cobra commands
 // used in security plugin, all futher logic is implemented
 // in handler/security and controller/security
 
 const (
-	securityCmd = "security"
+	securityCmdName = "security"
 
-	securityCreateCmd = "create"
-	securityGetCmd    = "get"
-	securityPatchCmd  = "patch"
-	securityDeleteCmd = "delete"
+	securityCreateCmdName = "create"
+	securityGetCmdName    = "get"
+	securityPatchCmdName  = "patch"
+	securityDeleteCmdName = "delete"
 
-	securityAccountCmd   = "account"
-	securityAccountAlias = "ac"
+	securityAccountCmdName = "account"
+	securityAccountAlias   = "ac"
 
-	securityAGCmd   = "action-groups"
-	securityAGAlias = "ag"
+	securityAGCmdName = "action-group"
+	securityAGAlias   = "ag"
 
-	securityUserCmd   = "user"
-	securityUserAlias = "u"
+	securityUserCmdName = "user"
+	securityUserAlias   = "u"
 
-	securityRoleCmd   = "role"
-	securityRoleAlias = "r"
+	securityRoleCmdName = "role"
+	securityRoleAlias   = "r"
 
-	securityRMCmd   = "role-mapping"
-	securityRMAlias = "rmp"
+	securityRMCmdName = "role-mapping"
+	securityRMAlias   = "rmp"
 
-	securityTenantCmd   = "tenant"
-	securityTenantAlias = "tnt"
+	securityTenantCmdName = "tenant"
+	securityTenantAlias   = "tnt"
 
-	securityConfigCmd = "config"
-	securityCacheCmd  = "flush-cache"
-	securityHealthCmd = "health-check"
+	securityConfigCmdName = "config"
+	securityCacheCmdName  = "flush-cache"
+	securityHealthCmdName = "health-check"
 
 	securityInputFlag       = "file"
 	securityInputFlagShort  = "f"
@@ -41,3 +47,16 @@ const (
 	securityOutputJsonFlag  = "json"
 	securityOutputYamlFlag  = "yaml"
 )
+
+var securityCreateCmd = &cobra.Command{
+	Use:   "",
+	Short: "",
+	Long:  "",
+}
+
+var securityAGCmd = &cobra.Command{
+	Use:   "",
+	Short: "",
+	Long:  "",
+	Run:   handler.Accounts,
+}
