@@ -57,12 +57,10 @@ type account interface {
 }
 
 type crud interface {
-	Get() (interface{}, error)
-	GetAll() (interface{}, error)
+	Get(string) (interface{}, error)
 	Delete(string) error
 	Create(string, interface{}) error
-	Patch(string, security.PatchQuery) error
-	PatchMultiple([]security.PatchQuery) error
+	Patch(string, []security.PatchQuery) error
 }
 
 type config interface {
