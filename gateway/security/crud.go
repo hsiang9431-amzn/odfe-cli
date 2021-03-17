@@ -2,49 +2,36 @@ package security
 
 import (
 	"errors"
+	"odfe-cli/client"
+	"odfe-cli/entity"
 	"odfe-cli/entity/security"
+	"odfe-cli/gateway"
 )
 
 var ErrInvalidCredentials = errors.New("Invalid credentials")
 
-func NewActionGroupCRUD(u, p string) (crud, error) {
-	if u == "" || p == "" {
-		return nil, ErrInvalidCredentials
-	}
-	return &actionGroupCRUD{username: u, password: p}, nil
+func NewActionGroupCRUD(c *client.Client, p *entity.Profile) (crud, error) {
+	return &actionGroupCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
 }
 
-func NewUsersCRUD(u, p string) (crud, error) {
-	if u == "" || p == "" {
-		return nil, ErrInvalidCredentials
-	}
-	return &usersCRUD{username: u, password: p}, nil
+func NewUsersCRUD(c *client.Client, p *entity.Profile) (crud, error) {
+	return &usersCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
 }
 
-func NewRolesCRUD(u, p string) (crud, error) {
-	if u == "" || p == "" {
-		return nil, ErrInvalidCredentials
-	}
-	return &rolesCRUD{username: u, password: p}, nil
+func NewRolesCRUD(c *client.Client, p *entity.Profile) (crud, error) {
+	return &rolesCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
 }
 
-func NewRoleMappingsCRUD(u, p string) (crud, error) {
-	if u == "" || p == "" {
-		return nil, ErrInvalidCredentials
-	}
-	return &roleMappingsCRUD{username: u, password: p}, nil
+func NewRoleMappingsCRUD(c *client.Client, p *entity.Profile) (crud, error) {
+	return &roleMappingsCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
 }
 
-func NewTenantsCRUD(u, p string) (crud, error) {
-	if u == "" || p == "" {
-		return nil, ErrInvalidCredentials
-	}
-	return &tenantsCRUDCRUD{username: u, password: p}, nil
+func NewTenantsCRUD(c *client.Client, p *entity.Profile) (crud, error) {
+	return &tenantsCRUDCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
 }
 
 type actionGroupCRUD struct {
-	username string
-	password string
+	gateway *gateway.HTTPGateway
 }
 
 func (crud *actionGroupCRUD) Get() (interface{}, error)                 { return nil, nil }
@@ -55,8 +42,7 @@ func (crud *actionGroupCRUD) Patch(string, security.PatchQuery) error   { return
 func (crud *actionGroupCRUD) PatchMultiple([]security.PatchQuery) error { return nil }
 
 type usersCRUD struct {
-	username string
-	password string
+	gateway *gateway.HTTPGateway
 }
 
 func (crud *usersCRUD) Get() (interface{}, error)                 { return nil, nil }
@@ -67,8 +53,7 @@ func (crud *usersCRUD) Patch(string, security.PatchQuery) error   { return nil }
 func (crud *usersCRUD) PatchMultiple([]security.PatchQuery) error { return nil }
 
 type rolesCRUD struct {
-	username string
-	password string
+	gateway *gateway.HTTPGateway
 }
 
 func (crud *rolesCRUD) Get() (interface{}, error)                 { return nil, nil }
@@ -79,8 +64,7 @@ func (crud *rolesCRUD) Patch(string, security.PatchQuery) error   { return nil }
 func (crud *rolesCRUD) PatchMultiple([]security.PatchQuery) error { return nil }
 
 type roleMappingsCRUD struct {
-	username string
-	password string
+	gateway *gateway.HTTPGateway
 }
 
 func (crud *roleMappingsCRUD) Get() (interface{}, error)                 { return nil, nil }
@@ -91,8 +75,7 @@ func (crud *roleMappingsCRUD) Patch(string, security.PatchQuery) error   { retur
 func (crud *roleMappingsCRUD) PatchMultiple([]security.PatchQuery) error { return nil }
 
 type tenantsCRUDCRUD struct {
-	username string
-	password string
+	gateway *gateway.HTTPGateway
 }
 
 func (crud *tenantsCRUDCRUD) Get() (interface{}, error)                 { return nil, nil }
