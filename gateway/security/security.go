@@ -66,8 +66,7 @@ type crud interface {
 type config interface {
 	Get() (interface{}, error)
 	Update(interface{}) error
-	Patch(security.PatchQuery) error
-	PatchMultiple([]security.PatchQuery) error
+	Patch([]security.PatchQuery) error
 }
 
 type cache interface {
