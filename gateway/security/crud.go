@@ -2,33 +2,11 @@ package security
 
 import (
 	"errors"
-	"odfe-cli/client"
-	"odfe-cli/entity"
 	"odfe-cli/entity/security"
 	"odfe-cli/gateway"
 )
 
 var ErrInvalidCredentials = errors.New("Invalid credentials")
-
-func NewActionGroupCRUD(c *client.Client, p *entity.Profile) (crud, error) {
-	return &actionGroupCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewUsersCRUD(c *client.Client, p *entity.Profile) (crud, error) {
-	return &usersCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewRolesCRUD(c *client.Client, p *entity.Profile) (crud, error) {
-	return &rolesCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewRoleMappingsCRUD(c *client.Client, p *entity.Profile) (crud, error) {
-	return &roleMappingsCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewTenantsCRUD(c *client.Client, p *entity.Profile) (crud, error) {
-	return &tenantsCRUDCRUD{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
 
 type actionGroupCRUD struct {
 	gateway *gateway.HTTPGateway
@@ -74,13 +52,13 @@ func (crud *roleMappingsCRUD) Create(string, interface{}) error          { retur
 func (crud *roleMappingsCRUD) Patch(string, security.PatchQuery) error   { return nil }
 func (crud *roleMappingsCRUD) PatchMultiple([]security.PatchQuery) error { return nil }
 
-type tenantsCRUDCRUD struct {
+type tenantsCRUD struct {
 	gateway *gateway.HTTPGateway
 }
 
-func (crud *tenantsCRUDCRUD) Get() (interface{}, error)                 { return nil, nil }
-func (crud *tenantsCRUDCRUD) GetAll() (interface{}, error)              { return nil, nil }
-func (crud *tenantsCRUDCRUD) Delete(string) error                       { return nil }
-func (crud *tenantsCRUDCRUD) Create(string, interface{}) error          { return nil }
-func (crud *tenantsCRUDCRUD) Patch(string, security.PatchQuery) error   { return nil }
-func (crud *tenantsCRUDCRUD) PatchMultiple([]security.PatchQuery) error { return nil }
+func (crud *tenantsCRUD) Get() (interface{}, error)                 { return nil, nil }
+func (crud *tenantsCRUD) GetAll() (interface{}, error)              { return nil, nil }
+func (crud *tenantsCRUD) Delete(string) error                       { return nil }
+func (crud *tenantsCRUD) Create(string, interface{}) error          { return nil }
+func (crud *tenantsCRUD) Patch(string, security.PatchQuery) error   { return nil }
+func (crud *tenantsCRUD) PatchMultiple([]security.PatchQuery) error { return nil }

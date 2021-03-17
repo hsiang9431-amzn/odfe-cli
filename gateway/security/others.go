@@ -1,27 +1,9 @@
 package security
 
 import (
-	"odfe-cli/client"
-	"odfe-cli/entity"
 	"odfe-cli/entity/security"
 	"odfe-cli/gateway"
 )
-
-func NewAccount(c *client.Client, p *entity.Profile) (account, error) {
-	return &accountClient{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewConfig(c *client.Client, p *entity.Profile) (config, error) {
-	return &configClient{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewCache(c *client.Client, p *entity.Profile) (cache, error) {
-	return &cacheClient{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
-
-func NewHealth(c *client.Client, p *entity.Profile) (health, error) {
-	return &healthClient{gateway: gateway.NewHTTPGateway(c, p)}, nil
-}
 
 type accountClient struct {
 	gateway *gateway.HTTPGateway
