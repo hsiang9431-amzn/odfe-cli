@@ -6,6 +6,15 @@ This document describes the implementation detail for `odfe-cli security` comman
 
 ## Code overview
 
+### Code for `cobra` package
+
+`cobra` is a widely used `go` library designed for creating powerful modern CLI applications. Many Go projects such as Kubernetes, Hugo, and Github CLI utilizes it for building their command line utilities.
+
+For supporting our feature, `commands/security.go` is composed to define all variables that is related to `cobra`. These codes are responsible for following behavior:
+- CLI help messages
+- CLI commands definitions
+- CLI flags definitions
+
 ### Packages
 
 `Packages` are the smallest unit of importable code in `go`. Listed packages are added to `odfe-cli` for supporting features interacting with security plugin.
