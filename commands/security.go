@@ -1,7 +1,7 @@
 package commands
 
 import (
-	handler "odfe-cli/handler/security"
+	"odfe-cli/handler/security"
 
 	"github.com/spf13/cobra"
 )
@@ -58,5 +58,14 @@ var securityAGCmd = &cobra.Command{
 	Use:   "",
 	Short: "",
 	Long:  "",
-	Run:   handler.Accounts,
+	Run:   securityHandlerWrapper,
+}
+
+func securityHandlerWrapper(cmd *cobra.Command, args []string) {
+	profile, err := GetProfile()
+	if err != nil {
+		DisplayError(err, securityCmdName)
+	}
+	handler := security.NewHandler(profile)
+	handler.Handle(cmd, args)
 }

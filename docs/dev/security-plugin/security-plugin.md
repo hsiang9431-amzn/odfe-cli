@@ -48,6 +48,8 @@ odfe-cli config patch -f config-patch.json
 odfe-cli security flush-cache
 ```
 
+---
+
 ## Commands
 
 ### CRUD commands
@@ -77,6 +79,8 @@ Flag | Alias | Description
 `--file` | `-f` | Input file that is used as query body, used by `create` and `patch`
 `--json` | \- | Output query response to `json` format
 `--yaml` | \- | Output query response to `yaml` format
+
+---
 
 ### Other commands
 
